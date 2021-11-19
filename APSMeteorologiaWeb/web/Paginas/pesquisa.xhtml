@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Pesquisa</title>
+    </h:head>
+    <h:body>
+        <h1>
+            Pesquisa
+        </h1>
+        <br></br>
+        <br></br>
+        <h:form>
+            <h:panelGrid columns="2">
+                Digite uma data para pesquisa
+                <h:inputText id="iptData" value="#{bgrPesquisar.data}" ></h:inputText>
+                <h:commandButton id="btnPesquisar" value="Pesquisar" action="#{bgrPesquisar.pesquisarPorData()}"></h:commandButton>
+                <h:outputText id="otpMensagem" value="#{bgrPequisar.mensagem}" style="color: red"></h:outputText>
+                <h:inputHidden></h:inputHidden>
+                <h:inputHidden></h:inputHidden>
+                ID
+                <h:outputText id="otpRespostaId" value="#{bgrPesquisar.id}"></h:outputText>
+                Temperatura
+                <h:outputText id="otpRespostaTemperatura" value="#{bgrPesquisar.temperatura}"></h:outputText>
+                Umidade
+                <h:outputText id="otpRespostaUmidade" value="#{bgrPesquisar.umidade}"></h:outputText>
+                Precipitacao
+                <h:outputText id="otpRespostaPrecipitação" value="#{bgrPesquisar.precipitacao}"></h:outputText>
+                Data
+                <h:outputText id="otpRespostaData" value="#{bgrPesquisar.data}"></h:outputText>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <link rel="stylesheet" href="css/table-style.css"></link>
+        <title>Pesquisa por Data</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h1>Pesquisa por data</h1>
+            <br></br>
+            <br></br>
+            <br></br>
+        </center>
+    </h:body>
+     <center>
+        <h:dataTable
+            value="#{bgrPesquisar.listaTemperatura}"
+        var="lista"
+        styleClass="tabela"
+        headerClass="tabela-header"
+        rowClasses="tabela-even-row, tabela-odd-row">
+            <h:column> 
+                <f:facet name="header">ID</f:facet> 
+                #{lista.idTemp} 
+            </h:column>
+            <h:column> 
+                <f:facet name="header">Temperatura</f:facet> 
+                #{lista.temperatura} 
+            </h:column>
+            <h:column> 
+                <f:facet name="header">Umidade</f:facet> 
+                #{lista.umidadade} 
+            </h:column>
+            <h:column> 
+                <f:facet name="header">Precipitacao</f:facet> 
+                #{lista.precipitacao} 
+            </h:column>
+            <h:column> 
+                <f:facet name="header">Data</f:facet> 
+                #{lista.dia} 
+            </h:column>
+        </h:dataTable>
+    </center>
+</html>
+
+
