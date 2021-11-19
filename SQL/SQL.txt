@@ -1,0 +1,10 @@
+create database climatempo;
+create table temperatura
+(
+	idTemp int primary key auto_increment,
+	temperatura varchar (15),
+	umidade varchar (15),
+	precipitacao varchar (15),
+	data varchar(15),
+	horario varchar(10)
+);
