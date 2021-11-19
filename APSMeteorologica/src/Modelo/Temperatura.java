@@ -6,7 +6,6 @@
 package Modelo;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -35,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Temperatura.findByUmidadade", query = "SELECT t FROM Temperatura t WHERE t.umidadade = :umidadade")
     , @NamedQuery(name = "Temperatura.findByPrecipitacao", query = "SELECT t FROM Temperatura t WHERE t.precipitacao = :precipitacao")
     , @NamedQuery(name = "Temperatura.findByDia", query = "SELECT t FROM Temperatura t WHERE t.dia = :dia")
+    , @NamedQuery(name = "Temperatura.findByHorario", query = "SELECT t FROM Temperatura t WHERE t.horario = :horario")
 })
 public class Temperatura implements Serializable
 {
@@ -52,8 +50,9 @@ public class Temperatura implements Serializable
     @Column(name = "precipitacao")
     private String precipitacao;
     @Column(name = "dia")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dia;
+    private String dia;
+    @Column(name = "horario")
+    private String horario;
 
     public Temperatura()
     {
@@ -104,14 +103,24 @@ public class Temperatura implements Serializable
         this.precipitacao = precipitacao;
     }
 
-    public Date getDia()
+    public String getDia()
     {
         return dia;
     }
 
-    public void setDia(Date dia)
+    public void setDia(String dia)
     {
         this.dia = dia;
+    }
+
+    public String getHorario()
+    {
+        return horario;
+    }
+
+    public void setHorario(String horario)
+    {
+        this.horario = horario;
     }
 
     @Override

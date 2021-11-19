@@ -8,6 +8,8 @@ package Apresentacao;
 import DAL.UTPDAO;
 import Modelo.Protocolo;
 import Modelo.Temperatura;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -119,25 +121,28 @@ public class frmPrincipal extends javax.swing.JDialog
             @Override
             public void run()
             {
-                Date data = new Date(System.currentTimeMillis());
+                Date date = new Date();        
+		String dateToStr = date.toInstant()
+				.atOffset(ZoneOffset.UTC)
+				.format( DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 
                 Temperatura temperatura = new Temperatura();
                 temperatura.setPrecipitacao(Protocolo.precipitacao);
                 temperatura.setTemperatura(Protocolo.temperatura);
                 temperatura.setUmidadade(Protocolo.umidade);
-                temperatura.setDia(data);
+                temperatura.setDia(dateToStr);
                 
                 UTPDAO utpdao = new UTPDAO();
                 utpdao.enviardados(temperatura);
-                
                 
                 lblUmidade.setText(Protocolo.umidade + "%");
                 lblTemperatura.setText(Protocolo.temperatura + "ºC");
                 lblPrecipitacao.setText(Protocolo.precipitacao);
                 
                 
+                
             }
-        }; timer.schedule(task, 0, 1000);
+        }; timer.schedule(task, 0, 60000);
         
         
         
